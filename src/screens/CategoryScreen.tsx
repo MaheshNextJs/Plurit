@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import tw from 'twrnc';
-// import {useNavigation} from '@react-navigation/native';
-// import {NavigationProp} from '../types/navigation';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../types/navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const imageMap: {[key: string]: any} = {
@@ -10,7 +10,7 @@ const imageMap: {[key: string]: any} = {
 };
 
 const HomeScreen = () => {
-  // const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation<NavigationProp>();
   return (
     <View style={tw`flex-1 bg-white`}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -66,7 +66,10 @@ const HomeScreen = () => {
               {name: 'Premiere', image: '1.png'},
               {name: 'Sports', image: '1.png'},
             ].map((item, index) => (
-              <TouchableOpacity key={index} style={tw`w-1/4 p-2`}>
+              <TouchableOpacity
+                key={index}
+                style={tw`w-1/4 p-2`}
+                onPress={() => navigation.navigate('EventDetails')}>
                 <View style={tw`bg-gray-100 p-2 rounded-lg items-center`}>
                   <Image
                     source={imageMap[item.image]}
